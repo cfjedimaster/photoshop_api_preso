@@ -4,11 +4,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Automating Image Workflows with APIs</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/moon.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -16,8 +16,136 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+
+				<section data-background="img/flow.jpg" data-background-opacity="0.2">
+				<h2>Automating Image Workflows<br>with APIs</h2>
+				</section>
+
+				<section>
+				<h2>who am i?</h2>
+				<ul>
+				<li>Raymond Camden</li>
+				<li>Senior Developer Evangelist for Adobe</li>
+				<li>Blog: raymondcamden.com</li>
+				<li>Email: jedimaster@adobe.com</li>
+				</ul>
+				</section>
+
+				<section data-background="img/what.png">
+				</section>
+
+				<section>
+				<h2>Adobe Photoshop API</h2>
+				<ul>
+				<li class="fragment">Image automation for Photoshop + Lightroom</li>
+				<li class="fragment">Set of REST APIs</li>
+				<li class="fragment">Node SDK in development</li>
+				</ul>
+				<aside class="notes">
+				APIs only - not storage, not a client side app - just APIs
+				I'll be using the REST APIs for my demo. 
+				</aside>
+				</section>
+
+				<section>
+				<h2>What's it cost?</h2>
+				<ul>
+				<li class="fragment">Free trial (500 API calls, no production use)</li>
+				<li class="fragment">SMB/Individual: 0.15 per call (subscribe via AWS)</li>
+				<li class="fragment">Enterprise: Reach out!</li>
+				<li class="fragment">Latest: <a href="https://developer.adobe.com/photoshop/api/pricing/" target="_new">Pricing</a></li>
+				</section>
+
+				<section>
+				<h2><u>Current</u> List of Features</h2>
+				<ul>
+				<li class="fragment">Photoshop Actions, Smart Object editing, Text layer editing, Smart Crop, Depth Blur, Rendering (PDF to JPG, thumbnails, etc), layer editing, resizing, artboard creation, remove background, and image mask </li>
+				<li class="fragment">AutoTone, AutoStraighten, Lightroom Presets and edits</li>
+				</ul>
+				<aside class="notes">
+				Split btn PS and LR
+				</aside>
+				</section>
+
+				<section data-background="img/how.png">
+				</section>
+
+				<section>
+				<h2>Credentials</h2>
+				<ul>
+				<li class="fragment">Adobe ID</li>
+				<li class="fragment">No credit card/payment required</li>
+				<li class="fragment"><a href="https://developer.adobe.com/photoshop/api/signup/?ref=signup" target="_new">Signup</a></li>
+				</ul>
+				</section>
+
+				<section>
+				<img src="img/signup.png">
+				</section>
+
+				<section>
+				<img src="img/signup2.png">
+				</section>
+
+				<section>
+				<img src="img/signup3.png">
+				<aside class="notes">
+				mention zip has the private key
+				</aside>
+				</section>
+
+				<section>
+				<h2>Checking Access - Part 1</h2>
+				<ul>
+				<li class="fragment">Convert client id + secret to JWT...</li>
+				<li class="fragment">JWT to Access Token...</li>
+				<li class="fragment">All can be done in one API call</li>
+				</ul>
+				</section>
+
+				<section>
+					<h2>CODE</h2>
+					<aside class="notes">Show generateAccessToken.mjs</aside>
+				</section>
+
+				<section>
+				<h2>Checking Access - Part 2</h2>
+				<ul>
+				<li class="fragment">Hit the "hello" endpont</li>
+				<li class="fragment">This isn't *required*</li>
+				</ul>
+				</section>
+
+				<section>
+					<h2>CODE</h2>
+					<aside class="notes">Show sayHello.mjs</aside>
+				</section>
+
+				<section>
+				<h2>Storage</h2>
+				<ul>
+				<li class="fragment">All services work with remote files only!</li>
+				<li class="fragment">AWS S3</li>
+				<li class="fragment">Google Drive</li>
+				<li class="fragment">Azure</li>
+				<li class="fragment">Dropbox</li>
+				<li class="fragment">Any readable URL (for input)</li>
+				<li class="fragment">Any writable URL (for output)</li>
+				</ul>
+				</section>
+
+				<!--
+Todo:
+
+Overview of APIs
+Getting credentials 
+Setting up storage 
+Making a call
+Use case: 
+
+https://developer.adobe.com/photoshop/api/
+
+				-->
 			</div>
 		</div>
 
@@ -33,7 +161,8 @@
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ], 
+				slideNumber:"c/t"
 			});
 		</script>
 	</body>
