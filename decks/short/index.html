@@ -95,10 +95,20 @@
 				</section>
 
 				<section>
+					<h2>Quick Aside...</h2>
+					<p>
+					<a href="https://medium.com/adobetech/important-update-for-developers-using-adobe-apis-bf25110d3b4" target="_new">Important Update for Developers Using Adobe APIs</a>
+					</p>
+					<aside class="notes">
+					this is where you bring up the changes to auth.
+					</aside>
+				</section>
+
+				<section>
 				<h2>Checking Access - Part 1</h2>
 				<ul>
-				<li class="fragment">Convert client id + secret to JWT...</li>
-				<li class="fragment">JWT to Access Token...</li>
+				<li class="fragment">Convert client id + secret to Access Token...</li>
+				<li class="fragment">Using new OAuth Server-to-Server creds</li>
 				<li class="fragment">All can be done in one API call</li>
 				</ul>
 				</section>
@@ -134,16 +144,108 @@
 				</ul>
 				</section>
 
+
+				<style>
+				.dim {
+					opacity: 0.2;
+				}
+				</style>
+				<section>
+				<h2>Storage</h2>
+				<ul>
+				<li class="dim">All services work with remote files only!</li>
+				<li><strong>AWS S3</strong></li>
+				<li class="dim">Google Drive</li>
+				<li class="dim">Azure</li>
+				<li class="dim">Dropbox</li>
+				<li class="dim">Any readable URL (for input)</li>
+				<li class="dim">Any writable URL (for output)</li>
+				</ul>
+				<aside class="notes">
+				mention s3 only
+				</aside>
+				</section>
+
+
+				<section data-background="img/api.png">
+				</section>
+
+				<section>
+				<h2>API Flow</h2>
+				<ul>
+				<li class="fragment">Get the input URL (or URLs)</li>
+				<li class="fragment">Create your JSON body</li>
+				<li class="fragment">Specify your output URL (or URLs)</li>
+				<li class="fragment">Hit the endpoint</li>
+				<li class="fragment">Poll for response</li>
+				<li class="fragment">Repeat. Profit. Etc.</li>
+				</ul>
+				</section>
+
+				<section>Example 1: Remove Background
+				<pre class="language-javascript"><code data-trim>
+{
+  "input": {
+    "href": "string",
+    "storage": "external"
+  },
+  "options": {
+    "optimize": "performance",
+  },
+  "output": {
+    "href": "string",
+    "storage": "external",
+    "overwrite": true,
+    "color": {
+      "space": "rgb"
+    },
+    "mask": {
+      "format": "soft"
+    }
+  }
+}				
+				</code></pre>
+				<p><a href="https://developer.adobe.com/photoshop/photoshop-api-docs/api/#tag/Photoshop/operation/cutout" target="_new">API Ref</a></p>
+
+				<aside class="notes">
+storage only needs to specified w/ Dropbox/Azure
+				</aside>
+				</section>
+
+				<section>
+				<img src="img/s3bucket.png">
+				</section>
+
+				<section>
+				<img src="img/dogs.jpg">
+				</section>
+
+				<section>
+					<h2>CODE</h2>
+					<aside class="notes">Show removeBg.mjs</aside>
+				</section>
+
+				<section>
+				<img src="img/dogs_nobg.png">
+				</section>
+
+				<section>
+				<h2>Polling</h2>
+				<ul>
+				<li class="fragment">Take the result from the job creation...</li>
+				<li class="fragment">Poll at an interval</li>
+				<li class="fragment">Wait for status 'succeeded' or 'failed'</li>
+				</ul>
+				</section>
+
+				<section>
+					<h2>CODE</h2>
+					<aside class="notes">Show removeBg_withPoll.mjs</aside>
+				</section>
+
+
 				<!--
-Todo:
-
-Overview of APIs
-Getting credentials 
-Setting up storage 
-Making a call
-Use case: 
-
-https://developer.adobe.com/photoshop/api/
+				polling
 
 				-->
 			</div>
