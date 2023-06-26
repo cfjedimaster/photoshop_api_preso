@@ -39,6 +39,31 @@ async function getAccessToken(id,secret) {
 
 }
 
+// Lame function to add a delay to my polling calls
+async function delay(x) {
+	return new Promise(resolve => {
+		setTimeout(() => resolve(), x);
+	});
+}
+
+async function pollJob(token, u) {
+	let status = '';
+	let data;
+	while(status !== 'succeeded' && status !== 'failed') {
+
+		let resp = await fetch(u, {
+			headers: {
+				'Authorization':`Bearer ${token}`,
+				'x-api-key': CLIENT_ID
+			}
+		});
+		data = await resp.json();
+		status = data.outputs[0].status;
+		if(status !== 'succeeded' && status !== 'failed') await delay(1000);
+	}
+	return data;
+}
+
 async function makeTextEditJob(token, input, output, text) {
 	let data = {
 		"inputs": [{
@@ -48,14 +73,9 @@ async function makeTextEditJob(token, input, output, text) {
 		"options": {
 			"layers":[
 				{
-					"name":"Ad Text",
+					"name":"Ad Copy",
 					"text":{
-						"content":text,
-						"characterStyles": [
-							{
-								"fontPostScriptName":"Adobe Clean"
-							}
-						]
+						"content":text
 					}
 				}
 			]
@@ -64,7 +84,7 @@ async function makeTextEditJob(token, input, output, text) {
 			"href": output,
 			"storage": "external",
 			"overwrite": true,
-			"type":"vnd.adobe.photoshop"
+			"type":"image/jpeg"
 		}]
 	};				
 
@@ -80,39 +100,19 @@ async function makeTextEditJob(token, input, output, text) {
 	return await resp.json();
 }
 
-// Lame function to add a delay to my polling calls
-async function delay(x) {
-	return new Promise(resolve => {
-		setTimeout(() => resolve(), x);
-	});
-}
-
 (async () => {
 
 	let token = await getAccessToken(CLIENT_ID, CLIENT_SECRET);
 
-	let inputURL = await getSignedDownloadUrl('input/test.psd');
-	let uploadURL = await getSignedUploadUrl('output/test_text.psd');
+	let inputURL = await getSignedDownloadUrl('input/test3.psd');
+	let uploadURL = await getSignedUploadUrl('output/test_text.jpg');
 
-	let newText = 'Raymond';
+	let newText = 'New Sale - 50% Off!';
 	let job = await makeTextEditJob(token, inputURL, uploadURL, newText);
-	console.log(job);
-	process.exit(1);
 	let jobUrl = job._links.self.href;
 
-	let status = '';
-	while(status !== 'succeeded' && status !== 'failed') {
+	let result = await pollJob(token,jobUrl);
+	console.log(JSON.stringify(result,null,'\t'));
 
-		let resp = await fetch(jobUrl, {
-			headers: {
-				'Authorization':`Bearer ${token}`,
-				'x-api-key': CLIENT_ID
-			}
-		});
-		let data = await resp.json();
-		status = data.status;
-		console.log(`Current status: ${status}`);
-		if(status !== 'succeeded' && status !== 'failed') await delay(1000);
-	}
 
 })()
