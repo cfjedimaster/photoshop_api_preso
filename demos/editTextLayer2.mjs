@@ -117,7 +117,7 @@ async function makeTextEditJob(token, input, output, text) {
 		},
 		{
 			file:'output/test_text_es.jpg', 
-			text:'¡Rebaja -50%'
+			text:'¡Rebaja! -50%'
 		}
 	];
 

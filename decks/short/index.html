@@ -182,7 +182,8 @@
 				</ul>
 				</section>
 
-				<section>Example 1: Remove Background
+				<section>
+				Example 1: Remove Background
 				<pre class="language-javascript"><code data-trim>
 {
   "input": {
@@ -243,11 +244,69 @@ storage only needs to specified w/ Dropbox/Azure
 					<aside class="notes">Show removeBg_withPoll.mjs</aside>
 				</section>
 
+				<section>
+				<h2>Real Use Case</h2>
+				<ul>
+				<li class="fragment">Marketing creates ad, with dummy text</li>
+				<li class="fragment">Day before sale, finally, folks agree on text</li>
+				<li class="fragment">You need to generate a final version...</li>
+				<li class="fragment">Oh, and in multiple languages</li>
+				<li class="fragment">An hour before they change the text 😀</li>
+				</ul>
+				</section>
 
-				<!--
-				polling
+				<section>
+				Our Input:
+				<img src="img/text_inputpsd.png">
+				</section>
 
-				-->
+				<section>
+				Example 2: Edit Text Layer
+				<pre class="language-javascript"><code data-trim>
+{
+		"inputs": [{
+			"href": input,
+			"storage": "external"
+		}],
+		"options": {
+			"layers":[
+				{
+					"name":"Ad Copy",
+					"text":{
+						"content":text
+					}
+				}
+			]
+		},
+		"outputs": [{
+			"href": output,
+			"storage": "external",
+			"overwrite": true,
+			"type":"image/jpeg"
+		}]
+	};	
+				</code></pre>
+				<p><a href="https://developer.adobe.com/photoshop/photoshop-api-docs/api/#tag/Photoshop/operation/text" target="_new">API Ref</a></p>
+
+				<aside class="notes">
+				be sure to note options
+				</aside>
+				</section>
+
+				<section>
+					<h2>CODE</h2>
+					<aside class="notes">Show editTestlayer and 2.mjs</aside>
+				</section>
+
+				<section>
+					<h2>Results</h2>
+					<div class="r-stack">
+					<img class="fragment" src="img/test_text.jpg">
+					<img class="fragment" src="img/test_text_es.jpg">
+					<img class="fragment" src="img/test_text_de.jpg">
+					</div>
+				</section>
+
 			</div>
 		</div>
 
