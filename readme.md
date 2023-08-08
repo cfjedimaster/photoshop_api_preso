@@ -4,3 +4,7 @@ This is my repository for presentations related to the [Photoshop API](https://d
 
 Photo credit for intro slide in the short deck: Photo by <a href="https://unsplash.com/it/@xoforoct?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">EJ Strat</a> on <a href="https://unsplash.com/photos/VjWi56AWQ9k?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   
+
+## History
+
+* 8/8/2023: I had been fleshing out `decks/short` and realized I was making it... not short. So I copied `short` to `main`. I will probably remove stuff from `short` in the future.
