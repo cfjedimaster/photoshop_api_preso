@@ -32,7 +32,7 @@
 				</ul>
 				</section>
 
-				<section data-background="img/what.png">
+				<section data-background="img/what.png" data-background-size="contain">
 				</section>
 
 				<section>
@@ -40,7 +40,7 @@
 				<ul>
 				<li class="fragment">Image automation for Photoshop + Lightroom</li>
 				<li class="fragment">Set of REST APIs</li>
-				<li class="fragment">Node SDK in development</li>
+				<li class="fragment">Node Sample in development</li>
 				<li class="fragment">Photoshop experience not required! 😀</li>
 				</ul>
 				<aside class="notes">
@@ -69,7 +69,7 @@
 				</aside>
 				</section>
 
-				<section data-background="img/how.png">
+				<section data-background="img/how.png" data-background-size="contain">
 				</section>
 
 				<section>
@@ -82,28 +82,17 @@
 				</section>
 
 				<section>
-				<img src="img/signup.png">
+				<img src="img/signup_new.png">
 				</section>
 
 				<section>
-				<img src="img/signup2.png">
+				<img src="img/signup_new2.png">
 				</section>
 
 				<section>
-				<img src="img/signup3.png">
+				<img src="img/signup_new3.png">
 				<aside class="notes">
-				mention zip has the private key
 				</aside>
-				</section>
-
-				<section>
-					<h2>Quick Aside...</h2>
-					<p>
-					<a href="https://medium.com/adobetech/important-update-for-developers-using-adobe-apis-bf25110d3b4" target="_new">Important Update for Developers Using Adobe APIs</a>
-					</p>
-					<aside class="notes">
-					this is where you bring up the changes to auth.
-					</aside>
 				</section>
 
 				<section>
@@ -117,7 +106,9 @@
 
 				<section>
 					<h2>CODE</h2>
-					<aside class="notes">Show generateAccessToken.mjs</aside>
+					<p>
+					Show generateAccessToken 
+					</p>
 				</section>
 
 				<section>
@@ -130,7 +121,9 @@
 
 				<section>
 					<h2>CODE</h2>
-					<aside class="notes">Show sayHello.mjs</aside>
+					<p>
+					Show sayHello
+					</p>
 				</section>
 
 				<section>
@@ -169,7 +162,7 @@
 				</section>
 
 
-				<section data-background="img/api.png">
+				<section data-background="img/api.png" data-background-size="contain">
 				</section>
 
 				<section>
@@ -225,7 +218,9 @@ storage only needs to specified w/ Dropbox/Azure
 
 				<section>
 					<h2>CODE</h2>
-					<aside class="notes">Show removeBg.mjs, possibly rename the output url and show bucket</aside>
+					<p> 
+					Show removeBg
+					</p>
 				</section>
 
 				<section>
@@ -243,8 +238,61 @@ storage only needs to specified w/ Dropbox/Azure
 
 				<section>
 					<h2>CODE</h2>
-					<aside class="notes">Show removeBg_withPoll.mjs</aside>
+					<p> 
+					Show removeBg_withPoll 
+					</p>
 				</section>
+
+				<section>
+				<h2>ActionJSON</h2>
+				<ul>
+				<li class="fragment">New(ish)</li>
+				<li class="fragment">Takes an Action JSON file and applies to new images</li>
+				<li class="fragment">Like the Action endpoint, but flexible</li>
+				<li class="fragment">Enabling:
+					<ul>
+					<li>Enable Developer Mode in Photoshop (via Preferences/Plugins)</li>
+					<li>Plugins/Development - select <code>Record Action Commands</code>
+					</ul>
+				</li>
+				</ul>
+				</section>
+
+				<section>
+					<h2>DEMO+CODE</h2>
+					<p> 
+					Show creating the file in PS,<br/>
+					Show actionJSON example 
+					</p>
+					<img src="img/cats.jpg" style="height:250px">
+				</section>
+
+				<section>
+					<img src="img/cats_blursepia.jpg">
+				</section>
+
+				<section>
+					<h2>CODE</h2>
+					<p> 
+					Modify actionJSON example 
+					</p>
+				</section>
+
+				<section>
+					<img src="img/cats_sepia.jpg">
+				</section>
+
+				<section>
+					<h2>Lightroom APIs</h2>
+					<ul>
+					<li class="fragment">AutoStraighten</li>
+					<li class="fragment">Presets</li>
+					<li class="fragment">Edit (exposure, contract, sharpness, many more)</li>
+					<li class="fragment">AutoTone (auto fix exposure, contract, sharpness, saturation, etc) </li>
+					</ul>
+				</section>
+
+<!-- ray, show sample image, than code slide -->
 
 				<section>
 				<h2>Real Use Case</h2>

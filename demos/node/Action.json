@@ -1,0 +1,4 @@
+[
+{"_obj":"gaussianBlur","radius":{"_unit":"pixelsUnit","_value":10.0}},
+{"_obj":"photoFilter","color":{"_obj":"HSBColorClass","brightness":67.45098039215686,"hue":{"_unit":"angleUnit","_value":35.123291015625},"saturation":70.58823529411765},"density":100,"preserveLuminosity":true}
+]
