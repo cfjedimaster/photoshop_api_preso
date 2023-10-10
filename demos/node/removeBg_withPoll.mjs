@@ -64,7 +64,8 @@ async function makeBGJob(token, input, output) {
 	let resp = await fetch('https://image.adobe.io/sensei/cutout', {
 		headers: {
 			'Authorization':`Bearer ${token}`,
-			'x-api-key': CLIENT_ID
+			'x-api-key': CLIENT_ID,
+			'Content-Type':'application/json'
 		}, 
 		method:'POST',
 		body:JSON.stringify(data)

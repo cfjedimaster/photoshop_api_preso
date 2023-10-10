@@ -1,5 +1,4 @@
 import 'dotenv/config';
-import * as fs from 'fs';
 
 import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { S3Client } from "@aws-sdk/client-s3";
@@ -40,24 +39,21 @@ async function getAccessToken(id,secret) {
 
 }
 
-async function makeActionJob(token, input, output, json) {
+async function makeATJob(token, input, output) {
 	let data = {
-		"inputs": [{
+		"inputs": {
 			"href": input,
 			"storage": "external"
-		}],
-		"options": {
-			"actionJSON": json,
 		},
 		"outputs": [{
 			"href": output,
 			"storage": "external",
 			"type":"image/jpeg",
-			"overwrite": true,
+			"overwrite": true
 		}]
 	};				
 
-	let resp = await fetch('https://image.adobe.io/pie/psdService/actionJSON', {
+	let resp = await fetch('https://image.adobe.io/lrService/autoTone', {
 		headers: {
 			'Authorization':`Bearer ${token}`,
 			'x-api-key': CLIENT_ID,
@@ -81,12 +77,10 @@ async function delay(x) {
 
 	let token = await getAccessToken(CLIENT_ID, CLIENT_SECRET);
 
-	let inputURL = await getSignedDownloadUrl('input/cats.jpg');
-	let uploadURL = await getSignedUploadUrl('output/cats_blursepia.jpg');
+	let inputURL = await getSignedDownloadUrl('input/goodsourceimage.jpg');
+	let uploadURL = await getSignedUploadUrl('output/betterimage.jpg');
 
-	let json = JSON.parse(fs.readFileSync('./Action.json','utf8'));
-
-	let job = await makeActionJob(token, inputURL, uploadURL, json);
+	let job = await makeATJob(token, inputURL, uploadURL);
 	let jobUrl = job._links.self.href;
 
 	let status = '';
