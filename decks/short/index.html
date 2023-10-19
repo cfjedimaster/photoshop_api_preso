@@ -31,7 +31,16 @@
 				</ul>
 				</section>
 
-				<section data-background="img/what.png">
+				<section>
+				<p>
+				<a href="https://github.com/cfjedimaster/photoshop_api_preso" target="_new">github.com/cfjedimaster/photoshop_api_preso</a>
+				</p>
+				<p>
+				<img src="img/qrcode.png">
+				</p>
+				</section>
+
+				<section data-background="img/what.png" data-background-size="contain">
 				</section>
 
 				<section>
@@ -39,7 +48,8 @@
 				<ul>
 				<li class="fragment">Image automation for Photoshop + Lightroom</li>
 				<li class="fragment">Set of REST APIs</li>
-				<li class="fragment">Node SDK in development</li>
+				<li class="fragment">Node sample in development</li>
+				<li class="fragment">Photoshop experience not required! 😀</li>
 				</ul>
 				<aside class="notes">
 				APIs only - not storage, not a client side app - just APIs
@@ -67,7 +77,7 @@
 				</aside>
 				</section>
 
-				<section data-background="img/how.png">
+				<section data-background="img/how.png" data-background-size="contain">
 				</section>
 
 				<section>
@@ -80,28 +90,17 @@
 				</section>
 
 				<section>
-				<img src="img/signup.png">
+				<img src="img/signup_new.png">
 				</section>
 
 				<section>
-				<img src="img/signup2.png">
+				<img src="img/signup_new2.png">
 				</section>
 
 				<section>
-				<img src="img/signup3.png">
+				<img src="img/signup_new3.png">
 				<aside class="notes">
-				mention zip has the private key
 				</aside>
-				</section>
-
-				<section>
-					<h2>Quick Aside...</h2>
-					<p>
-					<a href="https://medium.com/adobetech/important-update-for-developers-using-adobe-apis-bf25110d3b4" target="_new">Important Update for Developers Using Adobe APIs</a>
-					</p>
-					<aside class="notes">
-					this is where you bring up the changes to auth.
-					</aside>
 				</section>
 
 				<section>
@@ -115,7 +114,9 @@
 
 				<section>
 					<h2>CODE</h2>
-					<aside class="notes">Show generateAccessToken.mjs</aside>
+					<p>
+					Show generateAccessToken 
+					</p>
 				</section>
 
 				<section>
@@ -128,7 +129,9 @@
 
 				<section>
 					<h2>CODE</h2>
-					<aside class="notes">Show sayHello.mjs</aside>
+					<p>
+					Show sayHello
+					</p>
 				</section>
 
 				<section>
@@ -167,7 +170,7 @@
 				</section>
 
 
-				<section data-background="img/api.png">
+				<section data-background="img/api.png" data-background-size="contain">
 				</section>
 
 				<section>
@@ -223,7 +226,9 @@ storage only needs to specified w/ Dropbox/Azure
 
 				<section>
 					<h2>CODE</h2>
-					<aside class="notes">Show removeBg.mjs</aside>
+					<p> 
+					Show removeBg
+					</p>
 				</section>
 
 				<section>
@@ -241,7 +246,9 @@ storage only needs to specified w/ Dropbox/Azure
 
 				<section>
 					<h2>CODE</h2>
-					<aside class="notes">Show removeBg_withPoll.mjs</aside>
+					<p> 
+					Show removeBg_withPoll 
+					</p>
 				</section>
 
 				<section>
@@ -316,41 +323,6 @@ storage only needs to specified w/ Dropbox/Azure
 				</section>
 
 				<section>
-				<!--
-				<h2>Automation Examples (Lambda)</h2>
-				-->
-				<pre class="r-stretch"><code data-trim>
-// Sample Lambda code, SDK still in development
-const awsLib = require('/opt/nodejs/src/lib/awsLib')
-const sdk = require('/opt/nodejs/config/config')
-
-exports.handler = async (event) => {
-	try {
-		const client = await sdk.initSDK()
-
-		const input = {
-		// href: await awsLib.getSignedUrl('getObject', 'input/input01.jpg'), //ex: AWS S3 (s3://&lt;awsConfig.bucketName&gt;/input/input01.jpg)
-		href: 'https://raw.githubusercontent.com/adobe/adobe-photoshop-api-sdk/main/testfiles/input/input01.jpg',
-		storage: sdk.psApiLib.Storage.EXTERNAL,
-		}
-
-		const output = {
-		href: await awsLib.getSignedUrl('putObject', 'output/test01.png'),
-		storage: sdk.psApiLib.Storage.EXTERNAL,
-		type: sdk.psApiLib.MimeType.PNG
-		}
-
-		const job = await client.createCutout(input, output)
-		console.log(`Response: ${JSON.stringify(job,null,2)}\n`)
-		console.log(`Output File: ${await awsLib.getSignedUrl('getObject', 'output/test01.png')}\n`)
-	} catch (e) {
-		console.error(e)
-	}
-};				
-				</code></pre>
-				</section>
-
-				<section>
 					<h2>Resources</h2>
 					<ul>
 					<li><a href="https://developer.adobe.com/photoshop/photoshop-api-docs/" target="_new">Overview</a></li>
@@ -361,7 +333,7 @@ exports.handler = async (event) => {
 					</ul>
 				</section>
 
-				<section data-background="img/questions.jpg">
+				<section data-background="img/questions.jpg" data-background-size="contain">>
 				</section>
 
 			</div>

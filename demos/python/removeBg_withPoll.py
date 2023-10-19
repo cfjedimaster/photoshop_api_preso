@@ -1,4 +1,3 @@
-import json 
 import os 
 import requests 
 import boto3
@@ -14,8 +13,7 @@ REGION = 'us-east-1'
 def getAccessToken(id, secret):
 
 	response = requests.post(f"https://ims-na1.adobelogin.com/ims/token/v2?client_id={id}&client_secret={secret}&grant_type=client_credentials&scope=openid,AdobeID")
-	json_response = json.loads(response.text)
-	return json_response
+	return response.json()
 
 
 def create_removebg_job(id, token, inputURL, uploadURL):
@@ -42,8 +40,7 @@ def create_removebg_job(id, token, inputURL, uploadURL):
 	}			
 
 	response = requests.post(f"https://image.adobe.io/sensei/cutout", headers = {"Authorization": f"Bearer {token}", "x-api-key": id }, json=data)
-	json_response = json.loads(response.text)
-	return json_response
+	return response.json()
 
 
 # Credit: https://github.com/AdobeDocs/cis-photoshop-api-docs/blob/main/sample-code/storage-app/aws-s3/example.py
@@ -65,7 +62,7 @@ status = ""
 while status != 'succeeded' and status != 'failed':
 
 	response = requests.get(jobUrl, headers = {"Authorization": f"Bearer {token}", "x-api-key": CLIENT_ID })
-	json_response = json.loads(response.text)
+	json_response = response.json()
 	status = json_response["status"]
 	print(json_response)
 	print(f"Current status: {status }")
